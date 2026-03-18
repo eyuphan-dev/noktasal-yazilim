@@ -12,13 +12,14 @@ const menuItems = [
 
 function SiteHeader() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const logoSrc = `${import.meta.env.BASE_URL}logo.png`
 
   return (
     <header className="sticky top-0 z-40 border-b border-white/10 bg-slate-950/90 backdrop-blur-md">
       <div className="container-shell flex h-16 items-center justify-between gap-3 md:h-20 md:gap-6">
         <NavLink to="/" className="focus-ring rounded-md" aria-label="Noktasal Yazılım ana sayfa">
           <img
-            src="/logo.png"
+            src={logoSrc}
             alt="Noktasal Yazılım Teknolojileri"
             className="h-9 w-auto object-contain brightness-0 invert transition duration-300 hover:opacity-90 md:h-11"
             width="300"

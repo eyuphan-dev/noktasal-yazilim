@@ -1,12 +1,14 @@
 import { NavLink } from 'react-router-dom'
 
 function SiteFooter() {
+  const logoSrc = `${import.meta.env.BASE_URL}logo.png`
+
   return (
     <footer className="border-t border-white/10 bg-gradient-to-br from-slate-900 via-brand-950 to-slate-950 text-white">
       <div className="container-shell grid gap-8 py-12 md:grid-cols-3">
         <section>
           <img
-            src="/logo.png"
+            src={logoSrc}
             alt="Noktasal Yazılım Teknolojileri"
             className="h-12 w-auto object-contain brightness-0 invert"
             width="300"
