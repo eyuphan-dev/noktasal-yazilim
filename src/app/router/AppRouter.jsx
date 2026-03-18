@@ -28,7 +28,7 @@ function RouteLoader() {
 
 function AppRouter() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <Suspense fallback={<RouteLoader />}>
         <Routes>
           <Route element={<PublicLayout />}>
