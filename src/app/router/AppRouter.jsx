@@ -14,6 +14,7 @@ const AdminSolutionsPage = lazy(() => import('../../pages/admin/AdminSolutionsPa
 const AboutPage = lazy(() => import('../../pages/public/AboutPage'))
 const CareerPage = lazy(() => import('../../pages/public/CareerPage'))
 const ContactPage = lazy(() => import('../../pages/public/ContactPage'))
+const DesignComparisonPage = lazy(() => import('../../pages/public/DesignComparisonPage'))
 const HomePage = lazy(() => import('../../pages/public/HomePage'))
 const ReferencesPage = lazy(() => import('../../pages/public/ReferencesPage'))
 const SolutionDetailPage = lazy(() => import('../../pages/public/SolutionDetailPage'))
@@ -39,6 +40,7 @@ function AppRouter() {
             <Route path="referanslar" element={<ReferencesPage />} />
             <Route path="kariyer" element={<CareerPage />} />
             <Route path="iletisim" element={<ContactPage />} />
+            <Route path="tasarim-karsilastirma" element={<DesignComparisonPage />} />
           </Route>
 
           <Route path="admin/login" element={<AdminLoginPage />} />

@@ -1,4 +1,5 @@
 import { Outlet } from 'react-router-dom'
+import BackToTopButton from '../components/common/BackToTopButton'
 import SiteFooter from '../components/common/SiteFooter'
 import SiteHeader from '../components/common/SiteHeader'
 
@@ -9,6 +10,7 @@ function PublicLayout() {
       <main>
         <Outlet />
       </main>
+      <BackToTopButton />
       <SiteFooter />
     </div>
   )

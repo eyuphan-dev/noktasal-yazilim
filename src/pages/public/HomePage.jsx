@@ -70,6 +70,8 @@ const whyPoints = [
   'Entegrasyon, raporlama ve destek sürecini tek merkezden yönetebilen ekip yapısı.',
 ]
 
+const focusTags = ['Başvuru Sistemleri', 'Operasyon Panelleri', 'Karar Destek']
+
 function HomePage() {
   const reducedMotion = useReducedMotion()
   const [activeSlide, setActiveSlide] = useState(0)
@@ -141,67 +143,55 @@ function HomePage() {
                 />
 
                 <div className="container-shell relative z-10 flex min-h-[calc(100svh-4rem)] items-end py-8 sm:py-10 md:min-h-[calc(100svh-5rem)] md:py-14">
-                  <div className="grid w-full gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
-                    <div>
+                  <div className="mx-auto w-full max-w-5xl pb-4 text-center sm:pb-6">
                     <MotionBadge
-                      initial={reducedMotion ? false : { opacity: 0, y: 18 }}
-                      animate={activeSlide === index ? { opacity: 1, y: 0 } : { opacity: 0.5, y: 4 }}
-                      transition={{ duration: 0.46 }}
+                      initial={reducedMotion ? false : { opacity: 0, y: 14 }}
+                      animate={activeSlide === index ? { opacity: 1, y: 0 } : { opacity: 0.55, y: 5 }}
+                      transition={{ duration: 0.42 }}
                       className="inline-flex rounded-full border border-white/25 bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-cyan-100"
                     >
                       {slide.tag}
                     </MotionBadge>
                     <MotionTitle
-                      initial={reducedMotion ? false : { opacity: 0, y: 24 }}
+                      initial={reducedMotion ? false : { opacity: 0, y: 22 }}
                       animate={activeSlide === index ? { opacity: 1, y: 0 } : { opacity: 0.5, y: 8 }}
-                      transition={{ duration: 0.58 }}
-                      className="mt-5 max-w-3xl text-3xl font-semibold leading-tight sm:text-4xl md:text-5xl xl:text-6xl"
+                      transition={{ duration: 0.55 }}
+                      className="mx-auto mt-5 max-w-4xl text-3xl font-semibold leading-tight sm:text-5xl xl:text-6xl"
                     >
                       {slide.title}
                     </MotionTitle>
                     <MotionText
-                      initial={reducedMotion ? false : { opacity: 0, y: 22 }}
-                      animate={activeSlide === index ? { opacity: 1, y: 0 } : { opacity: 0.45, y: 6 }}
-                      transition={{ duration: 0.6 }}
-                      className="mt-6 max-w-2xl text-sm leading-7 text-slate-200 md:text-base"
+                      initial={reducedMotion ? false : { opacity: 0, y: 20 }}
+                      animate={activeSlide === index ? { opacity: 1, y: 0 } : { opacity: 0.55, y: 6 }}
+                      transition={{ duration: 0.58 }}
+                      className="mx-auto mt-6 max-w-3xl text-sm leading-7 text-slate-100 md:text-base"
                     >
                       {slide.text}
                     </MotionText>
-                    <div className="mt-8 flex flex-wrap gap-3">
+                    <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
                       <MotionLink
                         to="/iletisim"
-                        initial={reducedMotion ? false : { opacity: 0, y: 14 }}
-                        animate={activeSlide === index ? { opacity: 1, y: 0 } : { opacity: 0.6, y: 4 }}
+                        initial={reducedMotion ? false : { opacity: 0, y: 12 }}
+                        animate={activeSlide === index ? { opacity: 1, y: 0 } : { opacity: 0.65, y: 4 }}
                         transition={{ duration: 0.5 }}
-                        className="focus-ring inline-flex rounded-full bg-teal-400 px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-teal-300"
+                        className="focus-ring inline-flex rounded-full bg-teal-400 px-7 py-3 text-sm font-semibold text-slate-950 transition hover:bg-teal-300"
                       >
                         {slide.cta}
                       </MotionLink>
                       <Link
                         to="/cozumler"
-                        className="focus-ring inline-flex rounded-full border border-white/30 bg-white/10 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/20"
+                        className="focus-ring inline-flex rounded-full border border-white/35 bg-white/10 px-7 py-3 text-sm font-semibold text-white transition hover:bg-white/20"
                       >
                         Mimariyi İncele
                       </Link>
                     </div>
+                    <div className="mt-7 grid gap-2 sm:grid-cols-3">
+                      {slide.stats.map((stat) => (
+                        <div key={stat} className="rounded-xl border border-white/20 bg-slate-900/35 px-3 py-2 text-xs font-medium text-slate-100 sm:text-sm">
+                          {stat}
+                        </div>
+                      ))}
                     </div>
-
-                    <motion.aside
-                      initial={reducedMotion ? false : { opacity: 0, y: 20, scale: 0.98 }}
-                      animate={activeSlide === index ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0.6, y: 6, scale: 0.99 }}
-                      transition={{ duration: 0.55 }}
-                      className="rounded-2xl border border-white/20 bg-white/10 p-5 backdrop-blur-md md:p-6"
-                    >
-                      <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-100">{slide.panelTitle}</p>
-                      <p className="mt-3 text-sm leading-7 text-slate-200">{slide.panelText}</p>
-                      <ul className="mt-5 space-y-2">
-                        {slide.stats.map((stat) => (
-                          <li key={stat} className="rounded-xl border border-white/15 bg-slate-900/35 px-3 py-2 text-sm font-medium text-slate-100">
-                            {stat}
-                          </li>
-                        ))}
-                      </ul>
-                    </motion.aside>
                   </div>
                 </div>
               </article>
@@ -245,78 +235,64 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="container-shell pt-8 pb-12 md:pt-12 md:pb-16">
-        <div className="rounded-3xl border border-white/60 bg-gradient-to-br from-white via-slate-50 to-brand-50/50 p-5 shadow-soft md:p-7">
-          <div className="flex flex-wrap items-end justify-between gap-3">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand-700">Güven Ağı</p>
-              <p className="mt-2 text-sm text-slate-600">Kritik operasyon süreçlerini yönettiğimiz sektörler</p>
-            </div>
-            <span className="rounded-full border border-brand-200 bg-white px-3 py-1 text-xs font-semibold text-brand-800">Kurumsal Referans Ekosistemi</span>
-          </div>
+      <section className="container-shell pt-6 pb-16 md:pt-8 md:pb-24">
+          <div className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
+            <article className="rounded-3xl border border-brand-100/80 bg-white p-6 shadow-soft md:p-8">
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand-700">Güven Ağı ve Ölçek</p>
+              <h2 className="mt-3 text-2xl font-semibold text-slate-900 md:text-3xl">Sektörel tecrübe ve operasyonel güveni tek bakışta gösterin</h2>
+              <p className="mt-4 text-sm leading-7 text-slate-600">Bu düzen, karar vericinin önce güveni görüp sonra detaylara inmesini sağlar.</p>
 
-          <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            {trustItems.map((item) => (
-              <article key={item.label} className="interactive-lift rounded-2xl border border-brand-100/80 bg-white/90 p-4">
-                <div className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-teal-100 text-teal-700">
-                  <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M9 12l2 2 4-4" />
-                    <circle cx="12" cy="12" r="9" />
-                  </svg>
-                </div>
-                <h2 className="mt-3 text-sm font-semibold text-slate-900">{item.label}</h2>
-                <p className="mt-1 text-xs leading-6 text-slate-600">{item.detail}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+              <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                {trustItems.map((item) => (
+                  <article key={item.label} className="rounded-2xl border border-brand-100 bg-slate-50/80 p-4 transition hover:border-brand-300">
+                    <h3 className="text-sm font-semibold text-slate-900">{item.label}</h3>
+                    <p className="mt-1 text-xs leading-6 text-slate-600">{item.detail}</p>
+                  </article>
+                ))}
+              </div>
 
-      <section className="container-shell pb-16 md:pb-24">
-        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {highlightStats.map((item) => (
-            <article key={item.title} className="interactive-lift rounded-2xl border border-brand-100/80 bg-white p-6 shadow-soft">
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand-700">{item.title}</p>
-              <p className="mt-4 text-4xl font-semibold leading-none text-slate-900">{item.value}</p>
-              <p className="mt-3 text-sm leading-7 text-slate-600">{item.text}</p>
-              <div className="mt-4 h-1 w-14 rounded-full bg-gradient-to-r from-teal-400 to-cyan-400" />
+              <div className="mt-6 grid gap-3 sm:grid-cols-3">
+                {highlightStats.map((item) => (
+                  <article key={item.title} className="rounded-2xl border border-brand-100 bg-white p-4">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-brand-700">{item.title}</p>
+                    <p className="mt-2 text-3xl font-semibold leading-none text-slate-900">{item.value}</p>
+                    <p className="mt-2 text-xs leading-6 text-slate-600">{item.text}</p>
+                  </article>
+                ))}
+              </div>
             </article>
-          ))}
-        </div>
-      </section>
 
-      <section className="container-shell pb-16 md:pb-24">
-        <div className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
-          <article className="interactive-lift rounded-3xl border border-white/10 bg-gradient-to-br from-slate-950 via-brand-950 to-brand-900 p-7 text-white shadow-soft md:p-9">
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-100">Neden Noktasal?</p>
-            <h2 className="mt-4 text-2xl font-semibold leading-tight md:text-3xl">Kurumsal teknoloji yolculuğunu yönetilebilir hale getiriyoruz</h2>
-            <ul className="mt-7 space-y-4 text-sm leading-7 text-slate-100 md:text-base">
-              {whyPoints.map((point) => (
-                <li key={point} className="flex gap-3">
-                  <span className="mt-1 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-teal-400/20 text-teal-200">
-                    <svg viewBox="0 0 24 24" className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M9 12l2 2 4-4" />
-                    </svg>
-                  </span>
-                  <span>{point}</span>
-                </li>
-              ))}
-            </ul>
-          </article>
+            <article className="rounded-3xl border border-white/10 bg-gradient-to-br from-slate-950 via-brand-950 to-brand-900 p-6 text-white shadow-soft md:p-8">
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-100">Neden Noktasal?</p>
+              <ul className="mt-5 space-y-3 text-sm leading-7 text-slate-100">
+                {whyPoints.map((point) => (
+                  <li key={point} className="rounded-xl border border-white/15 bg-white/5 px-3 py-2">
+                    {point}
+                  </li>
+                ))}
+              </ul>
 
-          <article className="interactive-lift rounded-3xl border border-brand-100/70 bg-gradient-to-b from-white via-slate-50 to-brand-50/40 p-7 shadow-soft md:p-9">
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand-700">Odak Alanları</p>
-            <h3 className="mt-3 text-2xl font-semibold text-brand-950">Kamu ve B2B süreçleri</h3>
-            <p className="mt-4 text-sm leading-7 text-slate-600">Başvuru, operasyon, entegrasyon ve karar destek sistemleri için yüksek görünürlükte kullanıcı deneyimi.</p>
-            <div className="mt-5 rounded-2xl border border-brand-100 bg-white p-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">Hızlı Değer Üretimi</p>
-              <p className="mt-2 text-sm text-slate-700">İlk versiyon teslimi sonrası ölçümleme, iyileştirme ve ölçekleme adımlarını birlikte yönetiyoruz.</p>
-            </div>
-            <Link className="focus-ring mt-6 inline-flex rounded-full bg-brand-900 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-brand-800" to="/cozumler">
-              Tüm Çözümleri Gör
-            </Link>
-          </article>
-        </div>
+              <div className="mt-6 rounded-2xl border border-white/15 bg-white/10 p-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-cyan-100">Odak Alanları</p>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {focusTags.map((tag) => (
+                    <span key={tag} className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold text-slate-100">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="mt-6 flex flex-wrap gap-3">
+                <Link className="focus-ring inline-flex rounded-full bg-teal-400 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-teal-300" to="/cozumler">
+                  Tüm Çözümleri Gör
+                </Link>
+                <Link className="focus-ring inline-flex rounded-full border border-white/30 bg-white/10 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/20" to="/iletisim">
+                  Toplantı Talep Et
+                </Link>
+              </div>
+            </article>
+          </div>
       </section>
 
       <CtaBand
