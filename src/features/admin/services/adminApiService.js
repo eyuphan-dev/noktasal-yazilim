@@ -40,4 +40,47 @@ export const adminApiService = {
       body: payload,
     })
   },
+
+  getSolutions() {
+    return apiRequest('/admin/solutions')
+  },
+
+  createSolution(payload) {
+    return apiRequest('/admin/solutions', {
+      method: 'POST',
+      body: payload,
+    })
+  },
+
+  updateSolution(id, payload) {
+    return apiRequest(`/admin/solutions/${id}`, {
+      method: 'PATCH',
+      body: payload,
+    })
+  },
+
+  getReferences() {
+    return apiRequest('/admin/references')
+  },
+
+  createReference(payload) {
+    return apiRequest('/admin/references', {
+      method: 'POST',
+      body: payload,
+    })
+  },
+
+  updateReference(id, payload) {
+    return apiRequest(`/admin/references/${id}`, {
+      method: 'PATCH',
+      body: payload,
+    })
+  },
+
+  uploadImage(payload) {
+    return apiRequest('/admin/media/images', {
+      method: 'POST',
+      body: payload,
+    })
+  },
 }

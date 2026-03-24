@@ -1,5 +1,6 @@
+import { useQuery } from '@tanstack/react-query'
 import SectionIntro from '../../components/sections/SectionIntro'
-import { referencePartners } from '../../features/solutions/solutionCatalog'
+import { publicApiService } from '../../features/public/services/publicApiService'
 
 function partnerInitials(name) {
   return name
@@ -12,6 +13,13 @@ function partnerInitials(name) {
 }
 
 function ReferencesPage() {
+  const referencesQuery = useQuery({
+    queryKey: ['public-references'],
+    queryFn: () => publicApiService.getReferences(),
+  })
+
+  const referencePartners = referencesQuery.data || []
+
   return (
     <section className="container-shell py-16 md:py-24">
       <SectionIntro

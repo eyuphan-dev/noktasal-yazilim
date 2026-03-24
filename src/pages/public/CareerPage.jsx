@@ -43,7 +43,7 @@ function CareerPage() {
               <p className="mt-4 text-sm leading-7 text-slate-600">{role.summary}</p>
               <Link
                 to={`/iletisim?form=application&position=${encodeURIComponent(role.title)}`}
-                className="focus-ring mt-6 rounded-full border border-brand-200 px-4 py-2 text-sm font-semibold text-brand-800 transition hover:bg-brand-50"
+                className="focus-ring mt-5 inline-flex w-fit rounded-full border border-brand-200 px-4 py-2 text-sm font-semibold text-brand-800 transition hover:bg-brand-50"
               >
                 Başvuru Yap
               </Link>

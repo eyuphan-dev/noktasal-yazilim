@@ -2,7 +2,9 @@ import {
   contentEditorSeed,
   contentSections,
   formEntries,
+  referenceItems,
   seoSeed,
+  solutionItems,
 } from '../mockData'
 
 const DELAY = 220
@@ -12,6 +14,8 @@ let memory = {
   contentSections: structuredClone(contentSections),
   contentEditor: structuredClone(contentEditorSeed),
   seo: structuredClone(seoSeed),
+  solutions: structuredClone(solutionItems),
+  references: structuredClone(referenceItems),
 }
 
 const wait = () => new Promise((resolve) => setTimeout(resolve, DELAY))
@@ -70,5 +74,75 @@ export const adminMockService = {
       item.pageKey === payload.pageKey ? { ...item, ...payload } : item,
     )
     return structuredClone(memory.seo)
+  },
+
+  async getSolutions() {
+    await wait()
+    return structuredClone(memory.solutions)
+  },
+
+  async createSolution(payload) {
+    await wait()
+    const next = {
+      id: payload.id || `sol-${Date.now()}`,
+      title: payload.title,
+      category: payload.category,
+      client: payload.client || '-',
+      period: payload.period || '-',
+      summary: payload.summary || '-',
+      status: payload.status || 'draft',
+    }
+    memory.solutions = [next, ...memory.solutions]
+    return structuredClone(next)
+  },
+
+  async updateSolution(id, payload) {
+    await wait()
+    memory.solutions = memory.solutions.map((item) =>
+      item.id === id ? { ...item, ...payload } : item,
+    )
+    return structuredClone(memory.solutions.find((item) => item.id === id))
+  },
+
+  async getReferences() {
+    await wait()
+    return structuredClone(
+      memory.references.map((item) => ({
+        id: item.id,
+        name: item.name || item.title || '',
+        period: item.period || '-',
+        logoUrl: item.logoUrl || '',
+        status: item.status || 'draft',
+      })),
+    )
+  },
+
+  async createReference(payload) {
+    await wait()
+    const next = {
+      id: payload.id || `ref-${Date.now()}`,
+      name: payload.name || payload.title,
+      period: payload.period || '-',
+      logoUrl: payload.logoUrl || '',
+      status: payload.status || 'draft',
+    }
+    memory.references = [next, ...memory.references]
+    return structuredClone(next)
+  },
+
+  async updateReference(id, payload) {
+    await wait()
+    memory.references = memory.references.map((item) =>
+      item.id === id ? { ...item, ...payload } : item,
+    )
+    return structuredClone(memory.references.find((item) => item.id === id))
+  },
+
+  async uploadImage(payload) {
+    await wait()
+    return {
+      url: payload.dataUrl || '',
+      format: 'mock',
+    }
   },
 }
