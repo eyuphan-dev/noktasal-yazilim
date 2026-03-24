@@ -1,27 +1,10 @@
-import { useQuery } from '@tanstack/react-query'
 import { Link, useParams } from 'react-router-dom'
 import CtaBand from '../../components/sections/CtaBand'
-import { publicApiService } from '../../features/public/services/publicApiService'
+import { solutionCatalog } from '../../features/solutions/solutionCatalog'
 
 function SolutionDetailPage() {
   const { slug } = useParams()
-  const solutionQuery = useQuery({
-    queryKey: ['public-solution-detail', slug],
-    queryFn: () => publicApiService.getSolutionBySlug(slug),
-    enabled: Boolean(slug),
-    retry: false,
-  })
-
-  const solution = solutionQuery.data || null
-
-  if (solutionQuery.isLoading) {
-    return (
-      <section className="container-shell py-16 md:py-24">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-700">Çözüm Detayı</p>
-        <h1 className="mt-4 text-3xl font-semibold text-brand-950 md:text-4xl">Kayıt yükleniyor...</h1>
-      </section>
-    )
-  }
+  const solution = solutionCatalog.find((item) => item.slug === slug)
 
   if (!solution) {
     return (

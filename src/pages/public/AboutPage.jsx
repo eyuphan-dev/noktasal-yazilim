@@ -1,13 +1,5 @@
-import { useQuery } from '@tanstack/react-query'
 import CtaBand from '../../components/sections/CtaBand'
 import SectionIntro from '../../components/sections/SectionIntro'
-import { publicApiService } from '../../features/public/services/publicApiService'
-
-const ABOUT_FALLBACK = {
-  title: 'Coğrafi bilgi sistemlerinde kurumsal güvenin ve sürdürülebilir yazılımın teknoloji ortağıyız.',
-  body: "2012'den bu yana kamu kurumları için yüksek güvenlikli veri yönetimi, çapraz sorgu altyapıları ve karar destek çözümleri geliştiriyoruz.",
-  highlight: 'Kurumsal Hikaye',
-}
 
 const milestones = [
   {
@@ -47,35 +39,27 @@ const certificates = [
 const accreditations = ['Kamu Bilişim Yetki Belgesi', 'Yazılım Yetki Belgesi']
 
 function AboutPage() {
-  const aboutContentQuery = useQuery({
-    queryKey: ['public-content-section', 'about-page'],
-    queryFn: () => publicApiService.getContentSection('about-page'),
-  })
-
-  const aboutContent = {
-    ...ABOUT_FALLBACK,
-    ...(aboutContentQuery.data || {}),
-  }
-
   return (
     <>
       <section className="container-shell py-16 md:py-24">
         <SectionIntro
           eyebrow="Hakkımızda"
-          title={aboutContent.title}
-          description={aboutContent.body}
+          title="Coğrafi bilgi sistemlerinde kurumsal güvenin ve sürdürülebilir yazılımın teknoloji ortağıyız."
+          description="2012'den bu yana kamu kurumları için yüksek güvenlikli veri yönetimi, çapraz sorgu altyapıları ve karar destek çözümleri geliştiriyoruz."
         />
 
         <div className="mt-12 grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
           <article className="rounded-3xl border border-brand-100 bg-gradient-to-br from-white via-brand-50/35 to-white p-6 shadow-soft md:p-8">
             <p className="inline-flex rounded-full border border-brand-200 bg-white px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-700">
-              {aboutContent.highlight}
+              Kurumsal Hikaye
             </p>
             <h2 className="mt-4 text-2xl font-semibold leading-tight text-slate-900 md:text-3xl">
               Kamu kurumlarının kritik süreçlerini güvenli yazılım altyapılarına dönüştürüyoruz
             </h2>
 
-            <p className="mt-5 text-sm leading-8 text-slate-700 md:text-base">{aboutContent.body}</p>
+            <p className="mt-5 text-sm leading-8 text-slate-700 md:text-base">
+              2012 yılında Kocaeli Üniversitesi Teknoloji Geliştirme Bölgesinde kuruldu. Coğrafi Bilgi Sistemlerine özgün yazılımlar geliştirmek için kurulan şirketimiz, 12 yılı aşkın süredir yenilikçi çözümler geliştirmeye devam etmektedir.
+            </p>
             <p className="mt-4 text-sm leading-8 text-slate-700 md:text-base">
               Kamu müşterilerimize verdiğimiz güvenle, kurumların mahrem sayılacak verilerini yönetiyor; çapraz sorgulamalarla raporlar ve istatistikler sunuyoruz.
             </p>
